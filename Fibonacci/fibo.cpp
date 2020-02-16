@@ -8,7 +8,7 @@ Conversion of a matrix expression to an algebraic expression
 */
 ll fibo(ll n)
 {
-	ll a = 1, b = 0, p = 0, q = 1, tmpA, tmpB, tmpP, tmpQ;
+    ll a = 1, b = 0, p = 0, q = 1, tmpA, tmpB, tmpP, tmpQ;
     
 	while (1)
 	{
