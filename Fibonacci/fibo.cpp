@@ -9,13 +9,13 @@ Conversion of a matrix expression to an algebraic expression
 ll fibo(ll n)
 {
 	ll a = 1, b = 0, p = 0, q = 1, tmpA, tmpB, tmpP, tmpQ;
-
+    
 	while (1)
 	{
 		if (n <= 0)
 			return b;
 
-		if (n % 2 == 0)
+	    if (n % 2 == 0)
 		{
 			tmpP = mod((p*p) + (q*q));
 			tmpQ = mod((q*q) + (2 * p*q));
