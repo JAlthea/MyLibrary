@@ -2,6 +2,10 @@ typedef long long ll;
 const ll m = 1e9;   //optional
 inline ll mod(ll k) { return k >= m ? k %= m : k; }
 
+/* 
+Time Complexity : O(logn) 
+Conversion of a matrix expression to an algebraic expression
+*/
 ll fibo(ll n)
 {
 	ll a = 1, b = 0, p = 0, q = 1, tmpA, tmpB, tmpP, tmpQ;
