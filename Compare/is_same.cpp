@@ -11,15 +11,11 @@ bool isSame(const T a, const T b)
 template <>
 bool isSame<float>(const float a, const float b)
 {
-    if (fabs(a - b) < numeric_limits<float>::epsilon())
-		return true;
-	return false;
+	return fabs(a - b) < numeric_limits<float>::epsilon()) ? true : false;
 }
 
 template <>
 bool isSame<double>(const double a, const double b)
 {
-    if (fabs(a - b) < numeric_limits<double>::epsilon())
-		return true;
-	return false;
+	return fabs(a - b) < numeric_limits<double>::epsilon()) ? true : false;
 }
