@@ -2,6 +2,7 @@
 /*
 enable : integer type, floating point number type
 */
+
 template <typename T>
 std::enable_if_t<std::is_floating_point_v<T>, std::pair<T, T>> rotatePoint90D(const std::pair<T, T> &point)
 {
