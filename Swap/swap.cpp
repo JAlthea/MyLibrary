@@ -16,7 +16,7 @@ void swap<double>(double &a, double &b)
 template <>
 void swap<float>(float &a, float &b)
 {
-	float c = a;
-	a = b;
-	b = c;
+    float c = a;
+    a = b;
+    b = c;
 }
