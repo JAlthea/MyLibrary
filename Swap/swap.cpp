@@ -1,5 +1,22 @@
 /* XOR swap for Integer */
-void swap(int &a, int &b)
+template <typename T>
+void swap(T &a, T &b)
 {
     a ^= (b ^= (a ^= b));
+}
+
+template <>
+void swap<double>(double &a, double &b)
+{
+    double c = a;
+    a = b;
+    b = c;
+}
+
+template <>
+void swap<float>(float &a, float &b)
+{
+	float c = a;
+	a = b;
+	b = c;
 }
