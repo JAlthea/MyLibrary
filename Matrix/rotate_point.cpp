@@ -1,5 +1,3 @@
-
-
 pair<int, int> rotatePoint90D(const pair<int, int> &point)
 {
 	vector<vector<int>> m = { { 0, -1}, {1, 0} };
