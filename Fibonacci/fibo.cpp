@@ -1,5 +1,5 @@
 typedef long long ll;
-const ll m = 1e9;   //optional
+const ll m = 1e9;   //custom value
 inline ll mod(ll k) { return k >= m ? k %= m : k; }
 
 /* 
