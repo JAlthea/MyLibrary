@@ -1,3 +1,6 @@
+#include <vector>
+using namespace std;
+
 template <typename T>
 vector<vector<T>> rotateArray(vector<vector<T>> &array)
 {
