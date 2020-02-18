@@ -1,14 +1,13 @@
-typedef long long ll;
-const ll m = 1e9;   //custom value
-inline ll mod(ll k) { return k >= m ? k %= m : k; }
+const long long m = 1e9;   //custom value
+inline long long mod(long long k) { return k >= m ? k %= m : k; }
 
 /* 
 Time Complexity : O(logn) 
 Conversion of a matrix expression to an algebraic expression
 */
-ll fibo(ll n)
+long long fibo(long long n)
 {
-	ll a = 1, b = 0, p = 0, q = 1, tmpA, tmpB, tmpP, tmpQ;
+	long long a = 1, b = 0, p = 0, q = 1, tmpA, tmpB, tmpP, tmpQ;
 
 	while (1)
 	{
@@ -34,7 +33,12 @@ ll fibo(ll n)
 	}
 }
 
-ll sum_fibo(ll n) { return mod(m + fibo(n + 2) - fibo(2)); }
+long long sum_fibo(long long n) 
+{
+	return mod(m + fibo(n + 2) - fibo(2)); 
+}
 
-ll sum_fibo(ll a, ll b) { return mod(m + fibo(b + 2) - fibo(a + 1)); }
-
+long long sum_fibo(long long a, long long b) 
+{ 
+	return mod(m + fibo(b + 2) - fibo(a + 1));
+}
