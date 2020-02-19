@@ -1,7 +1,7 @@
 #include <vector>
 
 template <typename T>
-std::vector<std::vector<T>> rotateArray2D(std::vector<std::vector<T>> &array)
+std::vector<std::vector<T>> rotateArray2D_90(std::vector<std::vector<T>> &array)
 {
 	int n = array.size();
 	int m = array[0].size();
