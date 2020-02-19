@@ -35,9 +35,13 @@ bool passMiller(int n)
 /*
 int main()
 {
-	if (passMiller(11)) 
-		printf("true");
-	else 
-		printf("false");
+	int p[] = { 2, 3, 5, 7, 11, 13, 17, 23, 29, 97, 561, 1105, 1729, 2465, 2821, 6601 };
+	for (auto i : p)
+	{
+		if (passMiller(i))
+			printf("true");
+		else 
+			printf("false");
+	}
 }
 */
