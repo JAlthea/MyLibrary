@@ -2,6 +2,7 @@
 
 /*
 digit : .000 => 3, .01010110 => 8
+Exmaple Result : 1011110.10101
 */
 std::string convertBinaryNumber(double value, int digit)
 {
