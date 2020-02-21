@@ -1,22 +1,14 @@
 /* XOR swap for Integer */
 template <typename T>
-void swap(T &a, T &b)
+std::enable_if_t <std::is_integral_v<T>> swap(T &a, T &b)
 {
-    a ^= (b ^= (a ^= b));
+	a ^= (b ^= (a ^= b));
 }
 
-template <>
-void swap<double>(double &a, double &b)
+template <typename T>
+std::enable_if_t<std::is_floating_point_v<T>> swap(T &a, T &b)
 {
-    double c = a;
-    a = b;
-    b = c;
-}
-
-template <>
-void swap<float>(float &a, float &b)
-{
-    float c = a;
-    a = b;
-    b = c;
+	T c = a;
+	a = b;
+	b = c;
 }
