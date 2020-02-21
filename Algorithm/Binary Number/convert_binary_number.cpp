@@ -4,12 +4,13 @@
 digit : .000 => 3, .01010110 => 8
 Exmaple Result : 1011110.10101
 */
-std::string convertBinaryNumber(double value, int digit)
+template <typename T>
+std::enable_if_t<std::is_arithmetic_v<T>, std::string> convertBinaryNumber(T value, int digit)
 {
-	int n = value;
+	long long n = value;
 	value -= (double)n;
 
-	int x = 1;
+	long long x = 1;
 	while (n > x)
 		x += x;
 
