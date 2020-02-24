@@ -1,3 +1,8 @@
+#include <type_traits>
+
+/*
+is_arithmetic : integer type, floating point number type
+*/
 
 /* 2 arguments */
 template <typename T>
