@@ -1,3 +1,9 @@
+#include <type_traits>
+
+/*
+is_arithmetic : integer type, floating point number type
+*/
+
 template <typename T>
 std::enable_if_t<std::is_arithmetic_v<T>, bool> greater(const vector<T> &a, const vector<T> &b)
 {
