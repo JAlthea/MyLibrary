@@ -31,3 +31,15 @@ std::enable_if_t<std::is_arithmetic_v<T>, bool> less(const pair<T, T> &a, const 
 		return a.second < b.second;
 	return a.first < b.first;
 }
+
+template <typename T>
+std::enable_if_t<std::is_arithmetic_v<T>, bool> greater(const T &a, const T &b)
+{
+	return a > b;
+}
+
+template <typename T>
+std::enable_if_t<std::is_arithmetic_v<T>, bool> less(const T &a, const T &b)
+{
+	return a < b;
+}
