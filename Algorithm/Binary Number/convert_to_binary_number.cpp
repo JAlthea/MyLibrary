@@ -5,7 +5,7 @@ digit : .000 => 3, .01010110 => 8
 Exmaple Result : 1011110.10101
 */
 template <typename T>
-std::enable_if_t<std::is_arithmetic_v<T>, std::string> convertBinaryNumber(T value, int digit)
+std::enable_if_t<std::is_arithmetic_v<T>, std::string> convertToBinaryNumber(T value, int digit)
 {
 	long long n = value;
 	value -= (double)n;
