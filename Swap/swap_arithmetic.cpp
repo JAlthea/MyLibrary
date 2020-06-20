@@ -1,5 +1,6 @@
-/* XOR swap for Integer type
-   Minimum memory usage */
+/* 
+XOR swap for minimum memory usage.
+*/
 template <typename T>
 std::enable_if_t <std::is_integral_v<T>> swap(T &a, T &b)
 {
