@@ -8,6 +8,7 @@ vector<int> convertToBigInteger(const string &s)
     vector<int> result(s.size(), 0);
     for(int i=0; i<s.size(); ++i)
         result[i] = s[i] - 48;
+    reverse(result.begin(), result.end());
     return result;
 }
 
