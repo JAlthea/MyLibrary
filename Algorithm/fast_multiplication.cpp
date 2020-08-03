@@ -2,6 +2,15 @@
 #include <algorithm>
 using namespace std;
 
+//integer : string -> vector<int>
+vector<int> convertToBigInteger(const string &s)
+{
+    vector<int> result(s.size(), 0);
+    for(int i=0; i<s.size(); ++i)
+        result[i] = s[i] - 48;
+    return result;
+}
+
 //a += b * (10^k);
 void addTo(vector<int> &a, const vector<int> &b, int k)
 {
