@@ -3,15 +3,42 @@
 using namespace std;
 
 //a += b * (10^k);
-void addTo(vector<int> &a, vector<int> &b, int k)
+void addTo(vector<int> &a, const vector<int> &b, int k)
 {
     
+    
+    for(int i=0; i<a.size(); ++i)
+    {
+        
+    }
 }
 
-//a -= b; (a >= b)
-void subFrom(vector<int> &a, vector<int> &b)
+//a -= b; (input : a >= b)
+void subFrom(vector<int> &a, const vector<int> &b)
 {
-    
+    //102, 21 => {2, 0, 1}, {1, 2}
+    for(int i=0; i<b.size(); ++i)
+    {
+        int now = a[i] - b[i];
+        if(now < 0)
+        {
+            while(int next=i+1; next<a.size(); ++next)
+            {
+                if(a[next] > 0)
+                {
+                    --a[next];
+                    for(int between=i+1; between<next; ++between)
+                        a[between] = 9;
+                    a[i] += 10 - b[i];
+                    break;
+                }
+            }
+        }
+        else
+        {
+            a[i] = now;
+        }
+    }
 }
 
 //calculrate integer digit rounding
@@ -45,6 +72,7 @@ vector<int> multiply(const vector<int> &a, const vector<int> &b)
     for(int i=0; i<a.size(); ++i)
         for(int j=0; j<b.size(); ++j)
             result[i+j] += a[i] * b[j];
+    
     normalize(result);
     return result;
 }
@@ -54,13 +82,16 @@ vector<int> karatsuba(const vector<int> &a, const vector<int> &b)
 {
     int aSize = a.size(), bSize = b.size();
     
-    if (aSize < bSize)
+    //swap(a, b)
+    if(aSize < bSize)
         return karatsuba(b, a);
-
-    if (aSize == 0 || bSize == 0)
+    
+    //base case 1
+    if(aSize == 0 || bSize == 0)
         return vector<int>();
 
-    if (aSize <= 100)
+    //base case 2
+    if(aSize <= 100)
         return multiply(a, b);
         
     int half = aSize >> 1;
@@ -71,15 +102,15 @@ vector<int> karatsuba(const vector<int> &a, const vector<int> &b)
     
     vector<int> z2 = karatsuba(a1, b1);
     vector<int> z0 = karatsuba(a0, b0);
-    addTo(a0, a1, 0);
-    addTo(b0, b1, 0);
+    //a0 += a1; b0 += b1;
+    addTo(a0, a1, 0); addTo(b0, b1, 0);
+    
     vector<int> z1 = karatsuba(a0, b0);
-    subFrom(z1, z0);
-    subFrom(z1, z2);
+    //z1 -= z0 + z2;
+    subFrom(z1, z0); subFrom(z1, z2);
     
     vector<int> result;
-    addTo(result, z0, 0);
-    addTo(result, z1, half);
-    addTo(result, z2, half + half);
+    //result += z0 + z1 * (10^half) + z2 * (10^(2*half));
+    addTo(result, z0, 0); addTo(result, z1, half); addTo(result, z2, half + half);
     return result;
 }
