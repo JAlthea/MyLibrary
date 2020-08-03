@@ -1,4 +1,5 @@
 #include <vector>
+#include <string>
 #include <algorithm>
 using namespace std;
 
@@ -15,7 +16,7 @@ vector<int> convertToBigInteger(const string &s)
 //a += b * (10^k);
 void addTo(vector<int> &a, const vector<int> &b, int k)
 {
-    for(int i=0; i<b.size() + k - a.size(); ++i)
+    for(int i=0; i<max(b.size() + k, a.size()); ++i)
         a.push_back(0);
     
     for(int i=0; i<b.size(); ++i)
