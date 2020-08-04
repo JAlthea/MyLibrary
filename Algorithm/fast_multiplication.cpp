@@ -13,44 +13,6 @@ vector<int> convertToBigInteger(const string &s)
     return result;
 }
 
-//a += b * (10^k);
-void addTo(vector<int> &a, const vector<int> &b, int k)
-{
-    for(int i=0; i<max(b.size() + k, a.size()); ++i)
-        a.push_back(0);
-    
-    for(int i=0; i<b.size(); ++i)
-        a[i+k] += b[i];
-}
-
-//a -= b; (input : a >= b)
-void subFrom(vector<int> &a, const vector<int> &b)
-{
-    //102, 21 => {2, 0, 1}, {1, 2}
-    for(int i=0; i<b.size(); ++i)
-    {
-        int now = a[i] - b[i];
-        if(now < 0)
-        {
-            while(int next=i+1; next<a.size(); ++next)
-            {
-                if(a[next] > 0)
-                {
-                    --a[next];
-                    for(int between=i+1; between<next; ++between)
-                        a[between] = 9;
-                    a[i] += 10 - b[i];
-                    break;
-                }
-            }
-        }
-        else
-        {
-            a[i] = now;
-        }
-    }
-}
-
 //calculrate integer digit rounding
 void normalize(vector<int> &n)
 {
@@ -72,6 +34,27 @@ void normalize(vector<int> &n)
     
     while(n.size() > 1 && n.back() == 0)
         n.pop_back();
+}
+
+//a += b * (10^k);
+void addTo(vector<int> &a, const vector<int> &b, int k)
+{
+    for(int i=0; i<max(b.size() + k, a.size()); ++i)
+        a.push_back(0);
+    
+    for(int i=0; i<b.size(); ++i)
+        a[i+k] += b[i];
+    
+    normalize(a);
+}
+
+//a -= b; (input : a >= b)
+void subFrom(vector<int> &a, const vector<int> &b)
+{
+    for(int i=0; i<b.size(); ++i)
+        a[i] -= b[i];
+    
+    normalize(a);
 }
 
 //extra long integer A X B, O(n^2)
