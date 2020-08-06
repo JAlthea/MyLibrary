@@ -3,8 +3,18 @@
 #include <algorithm>
 using namespace std;
 
+//integer : vector<int> -> string
+string convertToString(vector<int> &n)
+{
+    reverse(n.begin(), n.end());
+    string result = "";
+    for(int i=0; i<n.size(); ++i)
+        result += to_string(n[i]);
+    return result;
+}
+
 //integer : string -> vector<int>
-vector<int> convertToBigInteger(const string &s)
+vector<int> convertToInt(const string &s)
 {
     vector<int> result(s.size(), 0);
     for(int i=0; i<s.size(); ++i)
