@@ -2,7 +2,7 @@
 using namespace std;
 
 /* 
-if size of data small, it will be useful method.
+if size of data is small, it will be useful method.
 example of actual use : C++ / std::sort()
 */
 
