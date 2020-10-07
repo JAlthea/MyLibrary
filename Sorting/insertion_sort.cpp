@@ -2,39 +2,34 @@
 using namespace std;
 
 /* 
-if data size <= 100, useful
-example : std::sort();
+if size of data small, it will be useful method.
+example of actual use : C++ / std::sort()
 */
 
-void insertionSort(vector<int> &arr)
+template <class RandomIt>
+inline void insertionSort(RandomIt first, RandomIt last)
 {
-    for (int i = 1; i < arr.size(); ++i)
-    {
-        int value = arr[i];
-        int j = i - 1;
-        while (j >= 0 && arr[j] > value)
-        {
-            arr[j + 1] = arr[j];
-            j--;
-        }
-        arr[j + 1] = value;
-    }
+	_Adl_verify_range(first, last);
+	const auto UFirst = _Get_unwrapped(first);
+	const auto ULast = _Get_unwrapped(last);
+	for (auto i = UFirst + 1; i < ULast; ++i)
+	{
+		auto value = *i;
+		auto j = i - 1;
+		while (j >= 0 && *j > value)
+		{
+			*(j + 1) = *j;
+			j--;
+		}
+		*(j + 1) = value;
+	}
 }
 
-template <typename T>
-void insertionSort(T *arr, T *end)
+/*
+int main()
 {
-    int left = arr;
-    int right = (end - 1 - arr); 
-    for (int i = left + 1; i < right; ++i)
-    {
-        int value = arr[i];
-        int j = i - 1;
-        while (j >= 0 && arr[j] > value)
-        {
-            arr[j + 1] = arr[j];
-            j--;
-        }
-        arr[j + 1] = value;
-    }
+	vector<int> arr = { 1, 3, 2, 5, 4 };
+	insertionSort(arr.begin(), arr.end());
+	for (auto &a : arr) cout << a << ' ';
 }
+*/
