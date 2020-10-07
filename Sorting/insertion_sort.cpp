@@ -29,7 +29,11 @@ inline void insertionSort(RandomIt first, RandomIt last)
 int main()
 {
 	vector<int> arr = { 1, 3, 2, 5, 4 };
+	vector<double> arr2 = { 1.0, 3.1, 2.99, 5, 4 };
 	insertionSort(arr.begin(), arr.end());
+	insertionSort(arr2.begin(), arr2.end());
 	for (auto &a : arr) cout << a << ' ';
+	cout << '\n';
+	for (auto &a : arr2) cout << a << ' ';
 }
 */
