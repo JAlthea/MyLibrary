@@ -85,7 +85,7 @@ void binary_tree<T>::erase_subtree(node<T> *node)
 template <typename T>
 int binary_tree<T>::erase_leaf(node<T> *node)
 {
-	if (leaf == NULL) return -1;
+	if (node == NULL) return -1;
 
 	if (is_leaf(node))
 	{
