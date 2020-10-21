@@ -8,7 +8,7 @@ using namespace std;
 
 /*
 "Binary Tree" Part
-line 23 ~ 278
+line 23 ~ 274
 */
 
 template <typename T>
@@ -115,7 +115,6 @@ bool binary_tree<T>::insert_root(T value)
 {
 	if (root != NULL) return false;
 	root = get_node(value);
-	tree_connecting_info[root] = { NULL, NULL };
 	return true;
 }
 
@@ -126,20 +125,19 @@ bool binary_tree<T>::insert(node<T> *parent, T value)
 	if (parent->left && parent->right) return false;
 
 	node<T> *new_node = get_node(value);
-	pair<node<T>, node<T>> p = tree_connecting_info[parent];
+	pair<node<T>, node<T>> p = tree_connecting_info[*parent];
 	if (parent->left == NULL)
 	{
 		parent->left = new_node;
-		p.first = new_node;
+		p.first = *new_node;
 	}
 	else if (parent->right == NULL)
 	{
 		parent->right = new_node;
-		p.second = new_node;
+		p.second = *new_node;
 	}
 
 	new_node->parent = parent;
-	tree_connecting_info[new_node] = { NULL, NULL };
 	return true;
 }
 
@@ -150,12 +148,11 @@ bool binary_tree<T>::insert_left(node<T> *parent, T value)
 	if (parent->left) return false;
 
 	node<T> *new_node = get_node(value);
-	pair<node<T>, node<T>> p = tree_connecting_info[parent];
+	pair<node<T>, node<T>> p = tree_connecting_info[*parent];
 	parent->left = new_node;
-	p.first = new_node;
+	p.first = *new_node;
 
 	new_node->parent = parent;
-	tree_connecting_info[new_node] = { NULL, NULL };
 	return true;
 }
 
@@ -166,12 +163,11 @@ bool binary_tree<T>::insert_right(node<T> *parent, T value)
 	if (parent->right) return false;
 
 	node<T> *new_node = get_node(value);
-	pair<node<T>, node<T>> p = tree_connecting_info[parent];
+	pair<node<T>, node<T>> p = tree_connecting_info[*parent];
 	parent->right = new_node;
-	p.second = new_node;
+	p.second = *new_node;
 
 	new_node->parent = parent;
-	tree_connecting_info[new_node] = { NULL, NULL };
 	return true;
 }
 
@@ -266,7 +262,7 @@ void binary_tree<T>::postorder(node<T> *node)
 template <typename T>
 void binary_tree<T>::levelorder(node<T> *root)
 {
-	queue<node<T>> q;
+	queue<node<T>*> q;
 	q.push(root);
 	while (!q.empty())
 	{
