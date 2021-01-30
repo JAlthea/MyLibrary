@@ -1,6 +1,10 @@
 #include <cstdio> //C IO
+#include <cstring>
+#include <clocale>  //for setlocale
 #include <iostream> //C++ IO
-#include <clocale>
+#include <string>
+#include <sstream>
+
 
 /*
 char : 1byte (-128 ~ 127)
@@ -28,9 +32,12 @@ int main()
 	wchar_t c = L'가';
 	wchar_t d = L'나';
 	wchar_t s[] = L"다 함께";
+	wstring ws = L"캬캬Abc";
 	wcout << c << '\n';
 	wprintf(L"%c\n", d);
 	wprintf(L"%s\n", s);
+	wcout << ws;
 	cout << sizeof(d) << '\n';
 	cout << sizeof(s) << '\n';
+	cout << sizeof(ws) << '\n';
 }
