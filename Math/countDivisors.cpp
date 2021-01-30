@@ -1,5 +1,8 @@
-//https://www.geeksforgeeks.org/count-divisors-n-on13/
-//Count Divisors of n in O(n^(1/3))
+/*
+https://www.geeksforgeeks.org/count-divisors-n-on13/
+Count Divisors of n in O(n^(1/3))
+cf. Naive Solution O(sqrt(n))
+*/
 
 #include <bits/stdc++.h>
 using namespace std;
