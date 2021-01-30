@@ -2,6 +2,13 @@
 #include <iostream> //C++ IO
 #include <clocale>
 
+/*
+char : 1byte (-128 ~ 127)
+unsigned char : 1byte (0 ~ 255)
+wchar_t : 2byte (0
+
+*/
+
 int main()
 {
 	setlocale(LC_ALL, "KO");
