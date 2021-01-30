@@ -39,5 +39,5 @@ int main()
 	wcout << ws;
 	cout << sizeof(d) << '\n';
 	cout << sizeof(s) << '\n';
-	cout << sizeof(ws) << '\n';
+	cout << ws.size() << '\n';
 }
