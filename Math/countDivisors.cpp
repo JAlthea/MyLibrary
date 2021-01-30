@@ -56,7 +56,7 @@ int countDivisors(int n)
             cnt = cnt + 1;
         }
  
-        // If n = a ^ p * b ^ q then total divisors of n are (p + 1) * (q + 1)
+        // If n = a ^ p * b ^ q, total divisors of n are (p + 1) * (q + 1)
         ans = ans * cnt;
     }
 
