@@ -1,12 +1,14 @@
 /*
 https://www.geeksforgeeks.org/count-divisors-n-on13/
-Count Divisors of n in O(n^(1/3))
-cf. Naive Solution O(sqrt(n))
+
+Count Divisors of n : O(n^(1/3)), but Pre-task Sieve of Eratosthenes : O(nlonglogn) >= O(n)
+cf. Naive Solution : O(sqrt(n))
 */
 
 #include <bits/stdc++.h>
 using namespace std;
 
+//O(nlonglogn)
 void SieveOfEratosthenes(int n, bool prime[], bool primesquare[], int a[])
 { 
     for (int i = 2; i <= n; i++)
@@ -33,6 +35,7 @@ void SieveOfEratosthenes(int n, bool prime[], bool primesquare[], int a[])
     }
 }
 
+//O(n^(1/3))
 int countDivisors(int n)
 {
     if (n == 1) return 1;
