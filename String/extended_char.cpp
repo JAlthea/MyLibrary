@@ -5,8 +5,7 @@
 /*
 char : 1byte (-128 ~ 127)
 unsigned char : 1byte (0 ~ 255)
-wchar_t : 2byte (0
-
+wchar_t : 2byte (0 ~ 65535)
 */
 
 int main()
