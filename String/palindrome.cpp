@@ -13,33 +13,33 @@ bool isPalindrome(int n)
 	return n == cmp;
 }
 
-void makePalindrome(int length)
+vector<int> makePalindrome(int length)
 {
-	vector<string> ret;
+	vector<string> s;
 	vector<int> palins;
     
 	int left_right = 0;
 	while (left_right <= 9)
 	{
-		ret.push_back(to_string(left_right));
+		s.push_back(to_string(left_right));
 		++left_right;
 	}
   
 	left_right = 0;
 	while (left_right <= 9)
 	{
-		ret.push_back(to_string(left_right) + to_string(left_right));
+		s.push_back(to_string(left_right) + to_string(left_right));
 		++left_right;
 	}
 
 	int prevSize = 0;
-	int nowSize = ret.size();
-	while (ret.back().size() < length)
+	int nowSize = s.size();
+	while (s.back().size() < length)
 	{
 		bool isExit = false;
 		for (int i = prevSize; i < nowSize; ++i)
 		{
-			if (ret[i].size() == length - 1)
+			if (s[i].size() == length - 1)
 			{
 				isExit = true;
 				break;
@@ -48,20 +48,20 @@ void makePalindrome(int length)
 			left_right = 0;
 			while (left_right <= 9)
 			{
-				ret.push_back(to_string(left_right) + ret[i] + to_string(left_right));
+				s.push_back(to_string(left_right) + s[i] + to_string(left_right));
 				++left_right;
 			}
 		}
 
 		if (isExit) break;
 		prevSize = nowSize;
-		nowSize = ret.size();
+		nowSize = s.size();
 	}
 
-	for (int i = 0; i < ret.size(); ++i)
+	for (int i = 0; i < s.size(); ++i)
 	{
-		if (ret[i].front() == '0') continue;
-		palins.push_back(stoi(ret[i]));
+		if (s[i].front() == '0') continue;
+		palins.push_back(stoi(s[i]));
 	}
 
 	sort(palins.begin(), palins.end());
