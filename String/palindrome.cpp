@@ -36,8 +36,15 @@ void makePalindrome(int length)
 	int nowSize = ret.size();
 	while (ret.back().size() < length)
 	{
+		bool isExit = false;
 		for (int i = prevSize; i < nowSize; ++i)
 		{
+			if (ret[i].size() == length - 1)
+			{
+				isExit = true;
+				break;
+			}
+			
 			left_right = 0;
 			while (left_right <= 9)
 			{
@@ -46,6 +53,7 @@ void makePalindrome(int length)
 			}
 		}
 
+		if (isExit) break;
 		prevSize = nowSize;
 		nowSize = ret.size();
 	}
