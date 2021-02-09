@@ -1,4 +1,5 @@
-/* Integer type : char, unsigned char, wchar_t, short, int, long, long long, ...
+#include <type_traits>
+/* Integer type : char, unsigned char, wchar_t, short, int, long, long long
 
 */
 
