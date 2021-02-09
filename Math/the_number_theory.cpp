@@ -2,7 +2,7 @@
 
 */
 
-
+// __gcd(a, b) in C++ header '#include <algorithm>'
 template <typename T>
 std::enable_if_t<std::is_integral_v<T>, T> GCD(T a, T b)
 {
