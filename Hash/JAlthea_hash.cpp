@@ -3,11 +3,15 @@
 using namespace std;
 
 /*
+[For Hash Collision Solution]
 GCD(R, M) = 1
 R : prime number1, M : prime number2
 */
 const unsigned R = 31;
 const unsigned M = 1234567891;
+
+
+
 
 unsigned hashFunction(string & st) {
     unsigned ret = 0;
