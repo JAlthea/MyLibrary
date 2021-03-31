@@ -62,16 +62,16 @@ enable_if_t<is_integral_v<T>, unsigned> hashFunction(T & num) {
 
 //Example
 struct hashFunctor {
-	unsigned operator()(const string & s) const {
-		unsigned ret = 0;
-		unsigned R_pow = 1;
-		for (unsigned i = 0; i < s.size(); ++i) {
-			ret += (s[i] - 96) * R_pow % M;
-			R_pow *= R % M;
-		}
+    unsigned operator()(const string & s) const {
+        unsigned ret = 0;
+        unsigned R_pow = 1;
+        for (unsigned i = 0; i < s.size(); ++i) {
+            ret += (s[i] - 96) * R_pow % M;
+            R_pow *= R % M;
+        }
 
-		return ret % M;
-	}
+        return ret % M;
+    }
 };
 
 void TestHashCollision() {
@@ -80,12 +80,12 @@ void TestHashCollision() {
     string s2 = "ababzcc";
     string s3 = "ababzcd";
 
-	cout << hashFunction(s1) << '\n';
-	cout << hashFunction(s2) << '\n';
-	cout << hashFunction(s3) << '\n';
+    cout << hashFunction(s1) << '\n';
+    cout << hashFunction(s2) << '\n';
+    cout << hashFunction(s3) << '\n';
 	
-	unordered_set<string, hashFunctor> hashMap;
-	hashMap.insert(s1);
-	hashMap.insert(s2);
-	hashMap.insert(s3);
+    unordered_set<string, hashFunctor> hashMap;
+    hashMap.insert(s1);
+    hashMap.insert(s2);
+    hashMap.insert(s3);
 }
