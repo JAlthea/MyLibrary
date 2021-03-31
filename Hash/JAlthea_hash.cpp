@@ -84,8 +84,8 @@ void TestHashCollision() {
     cout << hashFunction(s2) << '\n';
     cout << hashFunction(s3) << '\n';
 	
-    unordered_set<string, hashFunctor> hashMap;
-    hashMap.insert(s1);
-    hashMap.insert(s2);
-    hashMap.insert(s3);
+    unordered_set<string, hashFunctor> hashSet;
+    hashSet.insert(s1);
+    hashSet.insert(s2);
+    hashSet.insert(s3);
 }
