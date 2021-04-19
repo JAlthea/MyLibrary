@@ -75,11 +75,10 @@ std::enable_if_t<std::is_arithmetic_v<T>, bool> isLineContainPoint(Line<T> & l, 
 
 template <typename T>
 std::enable_if_t<std::is_arithmetic_v<T>, double> getPolygonArea(vector<pair<T, T>> & points) {
-    long long area = 0;
-    for (int i = 0; i < n; ++i) {
-        area += (points[i].first + points[(i + 1) % n].first) * (points[i].second - points[(i + 1) % n].second);
-    }
-    return (double)abs(area) / 2;
+	long long area = 0;
+	for (int i = 0; i < points.size(); ++i) {
+		area += (points[i].first + points[(i + 1) % points.size()].first) * (points[i].second - points[(i + 1) % points.size()].second);
+	}
+	return (double)abs(area) / 2;
 }
-
 
