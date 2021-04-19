@@ -6,10 +6,10 @@
 using namespace std;
 
 
-template<class T, class Enable = void>
+template <class T, class Enable = void>
 struct Line {};
 
-template<class T>
+template <class T>
 struct Line <T, typename std::enable_if<std::is_arithmetic<T>::value>::type> {
 	pair<T, T> a;
 	pair<T, T> b;
