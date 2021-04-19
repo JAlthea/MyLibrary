@@ -5,8 +5,12 @@
 #include <string>
 using namespace std;
 
-template <typename T = int>
-struct Line {
+
+template<class T, class Enable = void>
+struct Line {};
+
+template<class T>
+struct Line <T, typename std::enable_if<std::is_arithmetic<T>::value>::type> {
 	pair<T, T> a;
 	pair<T, T> b;
 
