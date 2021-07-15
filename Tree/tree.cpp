@@ -7,12 +7,10 @@
 using namespace std;
 
 /*
-"Binary Tree" Part
-
 Written JAlthea (2021/07)
-
 */
 
+//"Binary Tree"
 template <typename T>
 struct node
 {
