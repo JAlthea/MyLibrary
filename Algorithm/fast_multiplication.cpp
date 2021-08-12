@@ -4,64 +4,56 @@
 using namespace std;
 
 //integer : vector<int> -> string
-string convertToString(vector<int> &n)
-{
+string convertToString(vector<int> &n) {
     reverse(n.begin(), n.end());
     string result = "";
-    for(int i=0; i<n.size(); ++i)
+    for (int i = 0; i < n.size(); ++i)
         result += to_string(n[i]);
     return result;
 }
 
 //integer : string -> vector<int>
-vector<int> convertToInt(const string &s)
-{
+vector<int> convertToInt(const string &s) {
     vector<int> result(s.size(), 0);
-    for(int i=0; i<s.size(); ++i)
+    for (int i = 0; i < s.size(); ++i)
         result[i] = s[i] - 48;
     reverse(result.begin(), result.end());
     return result;
 }
 
 //calculrate integer digit rounding
-void normalize(vector<int> &n)
-{
+void normalize(vector<int> &n) {
     n.push_back(0);
-    for(int i=0; i+1<n.size(); ++i)
-    {
-        if(n[i] < 0)
-        {
+    for (int i = 0; i + 1 < n.size(); ++i) {
+        if (n[i] < 0) {
             int borrow = (abs(n[i]) + 9) / 10;
-            n[i+1] -= borrow;
+            n[i + 1] -= borrow;
             n[i] += borrow * 10;
         }
-        else
-        {
-            n[i+1] += n[i] / 10;
+        else {
+            n[i + 1] += n[i] / 10;
             n[i] %= 10;
         }
     }
     
-    while(n.size() > 1 && n.back() == 0)
+    while (n.size() > 1 && n.back() == 0)
         n.pop_back();
 }
 
 //a += b * (10^k);
-void addTo(vector<int> &a, const vector<int> &b, int k)
-{
-    for(int i=0; i<max(b.size() + k, a.size()); ++i)
+void addTo(vector<int> &a, const vector<int> &b, int k) {
+    for (int i = 0; i < max(b.size() + k, a.size()); ++i)
         a.push_back(0);
     
-    for(int i=0; i<b.size(); ++i)
-        a[i+k] += b[i];
+    for (int i = 0; i < b.size(); ++i)
+        a[i + k] += b[i];
     
     normalize(a);
 }
 
 //a -= b; (input : a >= b)
-void subFrom(vector<int> &a, const vector<int> &b)
-{
-    for(int i=0; i<b.size(); ++i)
+void subFrom(vector<int> &a, const vector<int> &b) {
+    for (int i = 0; i < b.size(); ++i)
         a[i] -= b[i];
     
     normalize(a);
@@ -69,32 +61,30 @@ void subFrom(vector<int> &a, const vector<int> &b)
 
 //extra long integer A X B, O(n^2)
 //example : multiply({3, 2, 1}, {6, 5, 4}) = 123 * 456 = 56088 = {8, 8, 0, 6, 5}
-vector<int> multiply(const vector<int> &a, const vector<int> &b)
-{
+vector<int> multiply(const vector<int> &a, const vector<int> &b) {
     vector<int> result(a.size() + b.size() + 1, 0);
-    for(int i=0; i<a.size(); ++i)
-        for(int j=0; j<b.size(); ++j)
-            result[i+j] += a[i] * b[j];
+    for (int i = 0; i < a.size(); ++i)
+        for (int j = 0; j < b.size(); ++j)
+            result[i + j] += a[i] * b[j];
     
     normalize(result);
     return result;
 }
 
 //extra long integer A X B, O(n^log3)
-vector<int> karatsuba(const vector<int> &a, const vector<int> &b)
-{
+vector<int> karatsuba(const vector<int> &a, const vector<int> &b) {
     int aSize = a.size(), bSize = b.size();
     
     //swap(a, b)
-    if(aSize < bSize)
+    if (aSize < bSize)
         return karatsuba(b, a);
     
     //base case 1
-    if(aSize == 0 || bSize == 0)
+    if (aSize == 0 || bSize == 0)
         return vector<int>();
 
     //base case 2
-    if(aSize <= 100)
+    if (aSize <= 100)
         return multiply(a, b);
         
     int half = aSize >> 1;
