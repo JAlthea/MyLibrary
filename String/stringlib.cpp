@@ -2,12 +2,13 @@
 #include <string>
 #include <vector>
 #include <iostream>
+using namespace std;
 
-std::vector<std::string> split(std::string &s, char deli) {
-	std::istringstream ss(s);
-	std::vector<std::string> result;
-	std::string nowString;
-	while (std::getline(ss, nowString, deli))
+vector<string> split(string & s, char deli) {
+	istringstream ss(s);
+	vector<string> result;
+	string nowString;
+	while (getline(ss, nowString, deli))
 		result.push_back(nowString);
 	return result;
 }
