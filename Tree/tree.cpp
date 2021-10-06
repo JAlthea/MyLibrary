@@ -12,8 +12,7 @@ Written JAlthea (2021/07)
 
 //"Binary Tree"
 template <typename T>
-struct node
-{
+struct node {
 	T value;
 	node *left;
 	node *right;
@@ -21,8 +20,7 @@ struct node
 };
 
 template <typename T>
-class binary_tree
-{
+class binary_tree {
 public:
 	binary_tree();
 	~binary_tree();
@@ -53,27 +51,23 @@ private:
 };
 
 template <typename T>
-binary_tree<T>::binary_tree()
-{
+binary_tree<T>::binary_tree() {
 	this.root = NULL;
 }
 
 template <typename T>
-binary_tree<T>::~binary_tree()
-{
+binary_tree<T>::~binary_tree() {
 	clear();
 }
 
 template <typename T>
-void binary_tree<T>::clear()
-{
+void binary_tree<T>::clear() {
 	erase_subtree(this->root);
 	this->root = NULL;
 }
 
 template <typename T>
-void binary_tree<T>::erase_subtree(node<T> *node)
-{
+void binary_tree<T>::erase_subtree(node<T> *node) {
 	if (node == NULL) return;
 	erase_subtree(node->left);
 	erase_subtree(node->right);
@@ -83,14 +77,11 @@ void binary_tree<T>::erase_subtree(node<T> *node)
 }
 
 template <typename T>
-int binary_tree<T>::erase_leaf(node<T> *node)
-{
+int binary_tree<T>::erase_leaf(node<T> *node) {
 	if (node == NULL) return -1;
 
-	if (is_leaf(node))
-	{
-		if (node->parent != NULL)
-		{
+	if (is_leaf(node)) {
+		if (node->parent != NULL) {
 			if (node->parent->left == node) node->parent->left = NULL;
 			else if (node->parent->right == node) node->parent->right = NULL;
 		}
@@ -103,36 +94,31 @@ int binary_tree<T>::erase_leaf(node<T> *node)
 }
 
 template <typename T>
-bool binary_tree<T>::is_leaf(node<T> *node)
-{
+bool binary_tree<T>::is_leaf(node<T> *node) {
 	if (node == NULL) return false;
 	if (node->left == NULL && node->right == NULL) return true;
 	return false;
 }
 
 template <typename T>
-bool binary_tree<T>::insert_root(T value)
-{
+bool binary_tree<T>::insert_root(T value) {
 	if (root != NULL) return false;
 	root = get_node(value);
 	return true;
 }
 
 template <typename T>
-bool binary_tree<T>::insert(node<T> *parent, T value)
-{
+bool binary_tree<T>::insert(node<T> *parent, T value) {
 	if (!search_node(parent)) return false;
 	if (parent->left && parent->right) return false;
 
 	node<T> *new_node = get_node(value);
 	pair<node<T>, node<T>> p = tree_connecting_info[*parent];
-	if (parent->left == NULL)
-	{
+	if (parent->left == NULL) {
 		parent->left = new_node;
 		p.first = *new_node;
 	}
-	else if (parent->right == NULL)
-	{
+	else if (parent->right == NULL) {
 		parent->right = new_node;
 		p.second = *new_node;
 	}
@@ -142,8 +128,7 @@ bool binary_tree<T>::insert(node<T> *parent, T value)
 }
 
 template <typename T>
-bool binary_tree<T>::insert_left(node<T> *parent, T value)
-{
+bool binary_tree<T>::insert_left(node<T> *parent, T value) {
 	if (!search_node(parent)) return false;
 	if (parent->left) return false;
 
@@ -157,8 +142,7 @@ bool binary_tree<T>::insert_left(node<T> *parent, T value)
 }
 
 template <typename T>
-bool binary_tree<T>::insert_right(node<T> *parent, T value)
-{
+bool binary_tree<T>::insert_right(node<T> *parent, T value) {
 	if (!search_node(parent)) return false;
 	if (parent->right) return false;
 
@@ -172,48 +156,41 @@ bool binary_tree<T>::insert_right(node<T> *parent, T value)
 }
 
 template <typename T>
-bool binary_tree<T>::search(T value)
-{
+bool binary_tree<T>::search(T value) {
 	return search_tree(this->root, value) ? true : false;
 }
 
 template <typename T>
-bool binary_tree<T>::search_node(node<T> *node)
-{
+bool binary_tree<T>::search_node(node<T> *node) {
 	return tree_connecting_info.find(node) == tree_connecting_info.end() ? false : true;
 }
 
 template <typename T>
-void binary_tree<T>::print_inorder()
-{
+void binary_tree<T>::print_inorder() {
 	inorder(this.root);
 	cout << '\n';
 }
 
 template <typename T>
-void binary_tree<T>::print_preorder()
-{
+void binary_tree<T>::print_preorder() {
 	preorder(this.root);
 	cout << '\n';
 }
 
 template <typename T>
-void binary_tree<T>::print_postorder()
-{
+void binary_tree<T>::print_postorder() {
 	postorder(this.root);
 	cout << '\n';
 }
 
 template <typename T>
-void binary_tree<T>::print_levelorder()
-{
+void binary_tree<T>::print_levelorder() {
 	levelorder(this.root);
 	cout << '\n';
 }
 
 template <typename T>
-node<T> *binary_tree<T>::get_node(T value)
-{
+node<T> *binary_tree<T>::get_node(T value) {
 	node<T> *new_node = new node<T>;
 	new_node->value = value;
 	new_node->parent = NULL;
@@ -223,8 +200,7 @@ node<T> *binary_tree<T>::get_node(T value)
 }
 
 template <typename T>
-bool binary_tree<T>::search_tree(node<T> *node, T value)
-{
+bool binary_tree<T>::search_tree(node<T> *node, T value) {
 	if (node == NULL) return false;
 	if (node->value == value) return true;
 	bool b_left = search_tree(node->left, value);
@@ -233,8 +209,7 @@ bool binary_tree<T>::search_tree(node<T> *node, T value)
 }
 
 template <typename T>
-void binary_tree<T>::inorder(node<T> *node)
-{
+void binary_tree<T>::inorder(node<T> *node) {
 	if (node == NULL) return;
 	inorder(node->left);
 	cout << node->value << ' ';
@@ -242,8 +217,7 @@ void binary_tree<T>::inorder(node<T> *node)
 }
 
 template <typename T>
-void binary_tree<T>::preorder(node<T> *node)
-{
+void binary_tree<T>::preorder(node<T> *node) {
 	if (node == NULL) return;
 	cout << node->value << ' ';
 	preorder(node->left);
@@ -251,8 +225,7 @@ void binary_tree<T>::preorder(node<T> *node)
 }
 
 template <typename T>
-void binary_tree<T>::postorder(node<T> *node)
-{
+void binary_tree<T>::postorder(node<T> *node) {
 	if (node == NULL) return;
 	postorder(node->left);
 	postorder(node->right);
@@ -260,12 +233,10 @@ void binary_tree<T>::postorder(node<T> *node)
 }
 
 template <typename T>
-void binary_tree<T>::levelorder(node<T> *root)
-{
+void binary_tree<T>::levelorder(node<T> *root) {
 	queue<node<T>*> q;
 	q.push(root);
-	while (!q.empty())
-	{
+	while (!q.empty()) {
 		node<T> *now = q.front(); q.pop();
 		cout << now->value << ' ';
 		if (now->left) q.push(now->left);
