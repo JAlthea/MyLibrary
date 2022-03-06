@@ -4,4 +4,5 @@
 #include <iostream>
 using namespace std;
 
-vector<string> split(string & s, char deli);
+vector<string> split(const string &s, char deli);
+int timeToInt(const string &stringTimeFormat);
