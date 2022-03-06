@@ -1,12 +1,12 @@
 vector<string> split(const string &s, char deli) {
-	istringstream ss(s);
-	vector<string> result;
-	string nowString;
+    istringstream ss(s);
+    vector<string> result;
+    string nowString;
 	
-	while (getline(ss, nowString, deli))
-		result.push_back(nowString);
+    while (getline(ss, nowString, deli))
+        result.push_back(nowString);
 	
-	return result;
+    return result;
 }
 
 vector<string> splitBlank(const string &s) {
@@ -14,9 +14,8 @@ vector<string> splitBlank(const string &s) {
     vector<string> result;
     string nowString;
 
-    while (ss >> nowString) {
+    while (ss >> nowString) 
         result.push_back(nowString);
-    }
 
     return result;
 }
