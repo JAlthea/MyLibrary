@@ -1,4 +1,4 @@
-vector<string> split(string & s, char deli) {
+vector<string> split(const string &s, char deli) {
 	istringstream ss(s);
 	vector<string> result;
 	string nowString;
